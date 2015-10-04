@@ -15,6 +15,9 @@
 	$saturday			= get_field('saturday');
 	$sunday				= get_field('sunday');
 
+    //Usluge
+
+
 
 get_header(); ?>
 
@@ -51,41 +54,28 @@ get_header(); ?>
         </div><!-- end .service__header -->
         <div class="service__content">
             <div class="owl-carousel">
-                <div class="service__item">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/lice.jpg" alt="" class="img-responsive">
-                    <h4>Tretman lica</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione, omnis accusamus harum blanditiis fugiat quis iusto!</p>
-                </div><!-- end service__item -->
-                <div class="service__item">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/lice.jpg" alt="" class="img-responsive">
-                    <h4>Tretman lica</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione, omnis accusamus harum blanditiis fugiat quis iusto!</p>
-                </div><!-- end service__item -->
-                <div class="service__item">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/lice.jpg" alt="" class="img-responsive">
-                    <h4>Tretman lica</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione, omnis accusamus harum blanditiis fugiat quis iusto!</p>    
-                </div><!-- end service__item -->
-                <div class="service__item">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/lice.jpg" alt="" class="img-responsive">
-                    <h4>Tretman lica</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione, omnis accusamus harum blanditiis fugiat quis iusto!</p>
-                </div><!-- end service__item -->
-                <div class="service__item">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/lice.jpg" alt="" class="img-responsive">
-                    <h4>Tretman lica</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione, omnis accusamus harum blanditiis fugiat quis iusto!</p>
-                </div><!-- end service__item -->
-                <div class="service__item">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/lice.jpg" alt="" class="img-responsive">
-                    <h4>Tretman lica</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione, omnis accusamus harum blanditiis fugiat quis iusto!</p>
-                </div><!-- end service__item -->
-                <div class="service__item">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/lice.jpg" alt="" class="img-responsive">
-                    <h4>Tretman lica</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione, omnis accusamus harum blanditiis fugiat quis iusto!</p>
-                </div><!-- end service__item -->
+                
+                <?php $loop = new WP_Query( array( 'post_type' => 'usluge', 'order_by' => 'post_id', 'order' => 'ASC' ) ); ?>
+
+                <?php while( $loop->have_posts() ) : $loop->the_post();  ?>
+
+                    <div href="#" class="service__item">
+                    <?php $image = get_field('service_image'); ?>
+                    <?php if ( !empty( $image ) ): ?>
+                        <div class="img-wrap" style="max-height: 145px; overflow: hidden;">
+                            <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="img-responsive">    
+                        </div>
+                    <?php endif; ?>
+                        <h4><?php the_title(); ?></h4>
+                        <?php $service_description = the_field('service_description'); ?>
+                        <?php if ( !empty ($service_description) ) :?>
+                            <p><?php echo $service_description; ?></p>
+                        <?php endif; ?>
+                    </div><!-- end service__item -->
+
+                <?php endwhile; ?>
+
+               
             </div><!-- end .owl-carousel -->
         </div><!-- end .service__content -->
     </div><!-- end .container -->
