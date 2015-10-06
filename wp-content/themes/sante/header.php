@@ -8,7 +8,11 @@
  *
  * @package Sante
  */
+ global $address, $phone, $email;
 
+ $address = get_field('adresa', 8);
+ $phone = get_field('telefon', 8);
+ $email = get_field('email', 8);
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -37,9 +41,9 @@
   <header>
       <div class="container">
           <div class="topbar">
-              <span class="topbar__item"><i class="glyphicon glyphicon-earphone"></i>+385 123 4343</span>
-              <span class="topbar__item hidden-xs"><i class="glyphicon glyphicon-envelope"></i>test@test.com</span>
-              <span class="topbar__item"><i class="glyphicon glyphicon-home"></i>Put pazdigrada 8, 21000 Split</span>
+              <span class="topbar__item"><i class="glyphicon glyphicon-earphone"></i><?php echo $phone; ?></span>
+              <span class="topbar__item hidden-xs"><i class="glyphicon glyphicon-envelope"></i><?php echo $email?></span>
+              <span class="topbar__item"><i class="glyphicon glyphicon-home"></i><?php echo $address; ?></span>
           </div>
           <div class="navbar"> <!-- edit navbar default -->
                <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,10 +61,12 @@
 								wp_nav_menu( array(
 
 									'theme_location' 		=> 'primary',
-									'containr'					=> 'nav',
+									'container'					=> 'nav',
+                  'depth'             => 0,
 									'container_class'		=> 'collapse navbar-collapse navbar-right',
 									'container_id'			=> 'main-navbar-collapse',
-									'menu_class'				=> 'nav navbar-nav'
+									'menu_class'				=> 'nav navbar-nav',
+                  'walker'            => new BootstrapNavMenuWalker()
 
 								) );
 							?>

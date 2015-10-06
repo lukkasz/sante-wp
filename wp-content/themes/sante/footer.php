@@ -8,9 +8,8 @@
  *
  * @package Sante
  */
-
+  global $address, $phone, $email;
 ?>
-
 <section class="footer-wrap">
   <footer class="footer">
       <div class="container">
@@ -29,9 +28,9 @@
               <div class="col-md-4">
                   <h5 class="footer__header">Kontakt</h5>
                   <ul class="footer__list list">
-                      <li class="list__item--address"></i>Put Pazdigrada 8, 21000 Split Hrvatska</li>
-                      <li class="list__item--email">info@sante.hr</li>
-                      <li class="list__item--phone">+389 95 1234 567</li>
+                      <li class="list__item--address"><?php echo $address; ?></li>
+                      <li class="list__item--email"><?php echo $email; ?></li>
+                      <li class="list__item--phone"><?php echo $phone; ?></li>
                   </ul>
               </div>
           </div><!-- end .row -->
