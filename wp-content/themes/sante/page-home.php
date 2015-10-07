@@ -6,7 +6,7 @@ get_header(); ?>
 
     <?php get_template_part('template-parts/content', 'lead'); ?>
 
-    <?php get_template_part('template-parts/content', 'service'); ?>
+    <?php get_template_part('template-parts/content', 'owl-service'); ?>
 
     <hr class="border--primary">
     

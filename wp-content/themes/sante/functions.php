@@ -76,6 +76,9 @@ function sante_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	
+
 }
 endif; // sante_setup
 add_action( 'after_setup_theme', 'sante_setup' );
