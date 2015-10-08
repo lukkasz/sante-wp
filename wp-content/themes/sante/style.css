@@ -2375,18 +2375,21 @@ pre {
 @media (min-width: 768px) {
   .container, .lead__image, .gallery {
     width: 750px;
+    margin: 0 auto;
   }
 }
 
 @media (min-width: 992px) {
   .container, .lead__image, .gallery {
     width: 970px;
+    margin: 0 auto;
   }
 }
 
 @media (min-width: 1200px) {
   .container, .lead__image, .gallery {
     width: 1170px;
+    margin: 0 auto;
   }
 }
 
@@ -8939,7 +8942,7 @@ section {
   width: 100%;
   margin-bottom: 10px;
   overflow: hidden;
-  height: 120px;
+  //height: 150px;
 }
 
 .gallery__item > img {

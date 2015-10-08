@@ -1,1 +1,78 @@
-$(function(){var o=$(".owl-carousel");o.owlCarousel({items:4,itemsDesktopSmall:[1025,3],itemsTablet:[750,2],itemsMobile:[479,1],pagination:!1,autoPlay:4e3}),$(".glyphicon-menu-left").click(function(){o.trigger("owl.prev")}),$(".glyphicon-menu-right").click(function(){o.trigger("owl.next")})}),$(function(){$("#navTabs--mobile").on("change",function(o){var e='#navTabs a[href="'+$(this).val()+'"]';$(e).tab("show")})}),$(function(){var o,e=window.location;e.hash&&(o='#navTabs a[href="'+e.hash+'"]',$(o).tab("show"))}),$(function(){var o=$(".gallery__content");o.imagesLoaded(function(){o.removeClass("is-loading"),o.isotope({layoutMode:"fitRows",itemSelector:".gallery__item",percentPosition:!0,fitRows:{gutter:10},filter:".salon"})}),$(".gallery__nav__item").on("click",function(){var e=$(this).attr("data-filter");o.isotope({filter:e}),$("a.active").removeClass("active")})});var gmap=function(){function o(){console.log("dsdsd");var o=new google.maps.Map(t,n),a=new google.maps.Geocoder;e(a,o)}function e(o,e){o.geocode({address:a},function(o,t){if(t===google.maps.GeocoderStatus.OK){e.setCenter(o[0].geometry.location);new google.maps.Marker({map:e,position:o[0].geometry.location})}else alert("Geocode was not successful for the following reason: "+t)})}var t=$("#map")[0],a="Put pazdigrada 8, Split",n={center:{lat:-34.397,lng:150.64},zoom:16,disableDefaultUI:!0};return{init:o}}();
+$(function(){
+
+    var $owl = $('.owl-carousel');
+
+    $owl.owlCarousel({
+        items: 4,
+        itemsDesktopSmall: [1025, 3],
+        itemsTablet: [750, 2],
+        itemsMobile: [479, 1],
+        pagination: false,
+        autoPlay: 4000
+    });
+
+    $('.glyphicon-menu-left').click(function(){
+        $owl.trigger('owl.prev');
+    });
+
+    $('.glyphicon-menu-right').click(function(){
+        $owl.trigger('owl.next');
+    });
+});
+
+$(function(){
+    var $galleryContent = $('.gallery__content');
+
+    $galleryContent.imagesLoaded(function(){
+        $galleryContent.removeClass('is-loading');
+        $galleryContent.isotope({
+            layoutMode: 'fitRows',
+            itemSelector: '.gallery__item',
+            percentPosition: true,
+            fitRows: {
+                gutter: 10
+            },
+            filter: '*'
+        });
+    });
+
+    $('.gallery__nav__item').on('click', function(e){
+        e.preventDefault();
+        var filter = $(this).attr('data-filter');
+        $galleryContent.isotope({ filter: filter });
+        $('a.active').removeClass('active');
+    });
+});
+
+// This script improves teb panels
+
+
+// Take hash from SELECT elemnt and open tab that tab on mobile devices
+$(function(){
+   $('#navTabs--mobile').on('change', function(e){
+        var link = '#navTabs a[href="' + $(this).val() + '"]';
+        $(link).tab('show');
+   });
+
+    //$(window).on('load', function(){
+    //     var loc = window.location;
+    //     var link;
+    //     if (loc.hash) {
+    //         nk = '#navTabs a[href="' + loc.hash + '"]';
+    //         ta$(link).tab('show');
+    //     }
+    // });
+   //};
+});
+
+
+// this function takes hash from external link and open tab in service.html with that hash
+$(function(){
+    var loc = window.location;
+    var link;
+
+    if (loc.hash) {
+        link = '#navTabs a[href="' + loc.hash + '"]';
+        $(link).tab('show');
+    }
+});

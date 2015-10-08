@@ -11,7 +11,14 @@
         <div class="service__content">
             <div class="owl-carousel">
                 
-                <?php $loop = new WP_Query( array( 'post_type' => 'usluge', 'order_by' => 'post_id', 'order' => 'ASC' ) ); ?>
+                <?php 
+                    $args = array( 
+                        'post_type' => 'usluge',
+                        'order_by' => 'post_id',
+                        'order' => 'ASC' 
+                    );
+
+                    $loop = new WP_Query( $args ); ?>
 
                 <?php while( $loop->have_posts() ) : $loop->the_post();  ?>
 
@@ -31,7 +38,7 @@
 
                 <?php endwhile; ?>
                 
-                <?php wp_reset_query(); // use this function to reset global Query variables ?>
+                <?php wp_reset_postdata(); // use this function to reset global Query variables ?>
 
                
             </div><!-- end .owl-carousel -->

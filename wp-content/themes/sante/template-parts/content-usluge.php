@@ -2,11 +2,18 @@
     <div class="container">
         <!-- Nav tabs -->
         <ul id="navTabs" class="nav nav-tabs nav-tabs--vertical" role="tablist">
-        	<?php $loop = new WP_Query( array( 'post_type' => 'usluge', 'order_by' => 'post_id', 'order' => 'ASC' ) ); ?>
+        	<?php 
+            $args = array( 
+              'post_type' => 'usluge', 
+              'order_by' => 'post_id', 
+              'order' => 'ASC' 
+            );
 
-          <?php while( $loop->have_posts() ) : $loop->the_post();  ?>
-          	<?php $service_attribute = get_field('service_attribute'); ?>
-						<li role="presentation"><a href="#<?php echo $service_attribute; ?>" aria-controls="tijelo" role="tab" data-toggle="tab"><?php the_title(); ?></a></li>
+            $loop = new WP_Query( $args ); ?>
+
+          <?php while( $loop->have_posts() ) : $loop->the_post();  
+          	     $service_attribute = get_field('service_attribute'); ?>
+						      <li role="presentation"><a href="#<?php echo $service_attribute; ?>" aria-controls="tijelo" role="tab" data-toggle="tab"><?php the_title(); ?></a></li>
           <?php endwhile; ?>
             
         </ul>
@@ -14,18 +21,18 @@
         <!-- Nav Mobile -->
         <div class="nav-tabs--wrap">
             <select name="tab-select" id="navTabs--mobile" class="nav-tabs--mobile">
-             <?php while( $loop->have_posts() ) : $loop->the_post();  ?>
-             	<?php $service_attribute = get_field('service_attribute'); ?>
-             	<option value="#<?php echo $service_attribute; ?>"><?php the_title(); ?></option>
+             <?php while( $loop->have_posts() ) : $loop->the_post(); 
+             	      $service_attribute = get_field('service_attribute'); ?>
+             	      <option value="#<?php echo $service_attribute; ?>"><?php the_title(); ?></option>
              <?php endwhile; ?>
             </select>
         </div>
 
         <!-- Tab panes -->
         <div class="tab-content tab-content--right">
-        	<?php while( $loop->have_posts() ) : $loop->the_post();  ?>
-        		<?php $service_attribute = get_field('service_attribute'); ?>
-						<div role="tabpanel" class="tab-pane active" id="<?php echo $service_attribute; ?>">
+        	<?php while( $loop->have_posts() ) : $loop->the_post();  
+        		      $service_attribute = get_field('service_attribute'); ?>
+						      <div role="tabpanel" class="tab-pane active" id="<?php echo $service_attribute; ?>">
 						<?php	
 								// Loop throught service_ items 
 								// Store service_item_title, service_item_image and service_item_description
@@ -57,7 +64,7 @@
 
 						
         	<?php endwhile; ?>
-          <?php wp_reset_query(); // use this function to reset global Query variables ?>
+          <?php wp_reset_postdata(); // use this function to reset global Query variables ?>
             
         </div><!-- end .tab-content --> 
     </div><!-- end .container -->

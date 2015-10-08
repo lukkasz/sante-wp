@@ -6,8 +6,15 @@
             <h2>Izdvojeni tretmani</h2>
         </div><!-- end .featured__header -->
         <div class="featured__content">
-            
-            <?php $loop = new WP_Query( array('post_type' => 'najave', 'order_by' => 'post_id', 'order' => 'asc', 'posts_per_page' => 4 ) ); ?>
+            <?php 
+            $args = array(
+                'post_type' => 'najave',
+                'order_by' => 'post_id',
+                'order' => 'asc',
+                'posts_per_page' => 4 
+            );
+
+            $loop = new WP_Query( $args ); ?>
 
             <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
 
@@ -24,7 +31,7 @@
             </div><!-- end .col-sm-6 -->    
 
             <?php endwhile; ?>
-            <?php wp_reset_query(); // use this function to reset global Query variables ?>
+            <?php wp_reset_postdata(); // use this function to reset global Query variables ?>
 
 
         </div><!-- end .featured__content -->
