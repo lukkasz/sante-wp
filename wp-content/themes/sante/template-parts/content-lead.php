@@ -1,13 +1,13 @@
 <?php
 
 // Advance Custom Field
-    $lead_text_primary      = get_field('lead_text_primary');
-    $lead_text_secondary    = get_field('lead_text_secondary');
-    $lead_text_accent       = get_field('lead_text_accent');
+    $lead_text_primary      = get_field('lead_text_primary', 73);
+    $lead_text_secondary    = get_field('lead_text_secondary', 73);
+    $lead_text_accent       = get_field('lead_text_accent', 73);
     // working time
-    $working_day            = get_field('mon_fri' );
-    $saturday               = get_field('saturday');
-    $sunday                 = get_field('sunday');
+    $working_day            = get_field('mon_fri', 70);
+    $saturday               = get_field('saturday', 70);
+    $sunday                 = get_field('sunday', 70);
 ?>
 <section class="lead">
     <div class="lead__image">

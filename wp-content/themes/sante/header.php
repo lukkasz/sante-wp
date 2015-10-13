@@ -10,9 +10,9 @@
  */
  global $address, $phone, $email;
 
- $address = get_field('adresa', 8);
- $phone = get_field('telefon', 8);
- $email = get_field('email', 8);
+ $address = get_field('adresa', 69);
+ $phone = get_field('telefon', 69);
+ $email = get_field('email', 69);
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -54,7 +54,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a href="index.html"><img class="brand__logo" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/logo.png" alt=""><h1 class="brand__name">Sante <span>zdravlje, njega i ljepota</span></h1></a>
+                  <a href="<?php echo esc_url( home_url('/') ); ?>"><img class="brand__logo" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/logo.png" alt=""><h1 class="brand__name">Sante <span>zdravlje, njega i ljepota</span></h1></a>
               </div><!-- end navbar-header -->
 							
 							<?php 

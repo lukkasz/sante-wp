@@ -269,3 +269,4 @@ class BootstrapNavMenuWalker extends Walker_Nav_Menu {
 	}
 
 }
+
